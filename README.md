@@ -22,6 +22,35 @@ The project aims to address the challenge of effectively managing personal finan
 
 <h2 align="center">Use Case Analysis</h3>
 
+**There are two ways you can start MoneyBuddy:**
+
+<h5 align="center">Using an executable jar file</h5>
+
+1. Make sure there is nothing in `bin` directory otherwise run `make clean` on the terminal
+![Step1](/images/img0.png) 
+![Step2](/images/img1.png)
+
+2. run `make jar` on terminal
+![Step3](/images/img2.png)
+
+3. Now, make sure you see the `executable jar` file in the project directory
+![Step4](/images/img3.png)
+
+4. Now run `java -jar MoneyBuddy.jar` on the terminal, which will run the program
+![Step5](/images/img4.png)
+
+<h5 align="center">Using make and make run</h5>
+
+1. Run `make` and `make run` on the terminal
+![Step6](/images/img5.png)
+
+**Now, how do you navigate through the Money Buddy Program itself?**
+
+1. Lets see how you can report your income to Money Buddy
+- Choose option 1, enter your income source and income itself
+
+
+
 <h2 align="center">Data Design</h3>
 
 <h2 align="center">UI Design</h3>

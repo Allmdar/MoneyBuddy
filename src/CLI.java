@@ -37,8 +37,17 @@ public class CLI {
             System.out.println("5. Export Data");
             System.out.println("6. Exit");
             System.out.print("Enter your choice: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine(); 
+
+            int choice = 0;
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.nextLine();
+                continue;
+            }
+
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -64,7 +73,7 @@ public class CLI {
             }
         }
     }
-
+    
     private void manageIncome() {
         try {
             System.out.println("Enter the income source:");
