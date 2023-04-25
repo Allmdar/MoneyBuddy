@@ -1,69 +1,127 @@
-Class: User
-Attributes:
-  - income: List<IncomeItem>
-  - expenses: List<ExpenseItem>
-  - savingsGoal: SavingsGoal
-  - alertSettings: AlertSettings
-Methods:
-  + addIncomeItem(IncomeItem item)
-  + addExpenseItem(ExpenseItem item)
-  + setSavingsGoal(SavingsGoal goal)
-  + updateAlertSettings(AlertSettings settings)
-  + getTotalIncome(): double
-  + getTotalExpenses(): double
-  + getSavingsProgress(): double
+##Class: User
 
-Class: IncomeItem
-Attributes:
-  - source: String
-  - amount: double
-  - date: LocalDate
-Methods:
-  + getSource(): String
-  + getAmount(): double
-  + getDate(): LocalDate
+####Attributes:
+- serialVersionUID: long
+- monthlyIncomeItems: HashMap<YearMonth, List<IncomeItem>>
+- monthlyExpenseItems: HashMap<YearMonth, List<ExpenseItem>>
+- incomeItems: List<IncomeItem>
+- expenseItems: List<ExpenseItem>
+- savingsGoals: HashMap<YearMonth, SavingsGoal>
+####Methods:
++ User()
++ getIncomeItems(): List<IncomeItem>
++ setIncomeItems(incomeItems: List<IncomeItem>): void
++ getExpenseItems(): List<ExpenseItem>
++ setExpenseItems(expenseItems: List<ExpenseItem>): void
++ setSavingsGoal(savingsGoal: SavingsGoal, yearMonth: YearMonth): void
++ getSavingsGoal(yearMonth: YearMonth): SavingsGoal
++ addIncome(incomeItem: IncomeItem): void
++ addExpense(expenseItem: ExpenseItem): void
++ calculateTotalIncome(yearMonth: YearMonth): double
++ calculateTotalExpenses(yearMonth: YearMonth): double
++ calculateTotalSavings(yearMonth: YearMonth): double
++ updateSavingsGoal(goal: double, percentageBased: boolean, percentage: double, yearMonth: YearMonth): void
++ updateSavingsGoalBasedOnPercentage(yearMonth: YearMonth): void
++ save(user: User, fileName: String): void
++ load(fileName: String): User
++ getSavingsGoals(): Map<YearMonth, SavingsGoal>
++ getMonthlyIncomeItems(): Map<YearMonth, List<IncomeItem>>
++ getMonthlyExpenseItems(): Map<YearMonth, List<ExpenseItem>>
 
-Class: ExpenseItem
-Attributes:
-  - category: String
-  - amount: double
-  - date: LocalDate
-Methods:
-  + getCategory(): String
-  + getAmount(): double
-  + getDate(): LocalDate
-
-Class: SavingsGoal
-Attributes:
-  - goalAmount: double
-  - goalPercentage: double
-Methods:
-  + getGoalAmount(): double
-  + getGoalPercentage(): double
-  + setGoalAmount(double goalAmount)
-  + setGoalPercentage(double goalPercentage)
+##Class: IncomeItem
+####Attributes:
+- source: String
+- amount: double
+- date: LocalDate
+####Methods:
++ IncomeItem(source: String, amount: double, date: LocalDate)
++ getSource(): String
++ setSource(source: String): void
++ getAmount(): double
++ setAmount(amount: double): void
++ getDate(): LocalDate
++ setDate(date: LocalDate): void
 
 
-Class: DataManager
-Attributes:
-Methods:
-  + saveUserData(User user, String filePath): void
-  + loadUserData(String filePath): User
+##Class: ExpenseItem
+####Attributes:
+- category: String
+- description: String
+- amount: double
+- date: LocalDate
+####Methods:
++ ExpenseItem(category: String, description: String, amount: double, date: LocalDate)
++ getCategory(): String
++ setCategory(category: String): void
++ getDescription(): String
++ setDescription(description: String): void
++ getAmount(): double
++ setAmount(amount: double): void
++ getDate(): LocalDate
++ setDate(date: LocalDate): void
 
-Class: CLI
-Attributes:
-Methods:
-  + displayMainMenu(): void
-  + processUserInput(User user): void
-  + manageIncome(User user): void
-  + manageExpenses(User user): void
-  + manageSavingsGoal(User user): void
-  + viewFinancialSummary(User user): void
-  + manageAlertsAndNotifications(User user): void
-  + exportData(User user): void
+##Class: SavingsGoal
+####Attributes:
+- goal: double
+- goalAmount: double
+- percentage: double
+- percentageBased: boolean
+- goalPercentage: double
+- originalPercentage: double
+- yearMonth: YearMonth
+####Methods:
++ setGoalPercentage(goalPercentage: double): void
++ getGoalAmount(): double
++ setGoalAmount(goalAmount: double): void
++ SavingsGoal()
++ SavingsGoal(goal: double)
++ SavingsGoal(goal: double, percentageBased: boolean, percentage: double, yearMonth: YearMonth)
++ getPercentage(): double
++ setPercentageBasedAndPercentage(percentageBased: boolean, percentage: double): void
++ getGoal(): double
++ setGoal(goal: double): void
++ isPercentageBased(): boolean
++ setOriginalPercentage(originalPercentage: double): void
++ getOriginalPercentage(): double
++ getGoalPercentage(): double
++ setPercentage(percentage: double): void
++ getYearMonth(): YearMonth
 
-Class: ReportGenerator
-Attributes:
-Methods:
-  + generatePDFReport(User user): String
+
+##Class: DataManager
+####Attributes:
+- filename: String
+####Methods:
++ DataManager(filename: String)
++ saveUserData(user: User): void
++ loadUserData(): User
+
+##Class: CLI
+####Attributes:
+- DATA_FILE: String
+- user: User
+- scanner: Scanner
+- df: DecimalFormat
+####Methods:
++ CLI(): void
++ start(): void
++ mainMenu(): void
++ manageIncome(): void
++ manageExpenses(): void
++ setSavingsGoal(): void
++ viewFinancialSummary(): void
++ exportData(): void
++ setSavingsGoalPercentage(): void
++ setSavingsGoalAmount(): void
++ main(args: String[]): void
++ viewSavingsGoal(): void
+
+##Class: ReportGenerator
+####Attributes: 
+- user: User
+- df: DecimalFormat
+####Methods:
++ ReportGenerator(user: User): void
++ generateCSVReport(fileName: String): boolean
+
 
