@@ -48,6 +48,10 @@ The project aims to address the challenge of effectively managing personal finan
 
 1. Lets see how you can report your income to Money Buddy
 - Choose option 1, enter your income source and income itself
+![Income](/images/img6.png)
+
+2. Now lets see how you can manage your expenses in Money Buddy
+- Choose option 2, 
 
 
 
