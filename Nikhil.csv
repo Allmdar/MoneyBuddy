@@ -1,0 +1,15 @@
+Income Items:
+YearMonth,Description,Amount
+2023-04,Information Desk,300.00
+2023-09,Admissions,400.00
+
+Expenses:
+YearMonth,Category,Description,Amount
+2023-04,Shopping,Pant,20.00
+2023-09,Shopping,Apple Watch,200.00
+2023-09,HH,Food,20.00
+
+Savings Goals:
+YearMonth,Amount,Percentage,MoneySaved,GoalMet
+2023-04,150.00,50.00,280.00,YES
+2023-09,200.00,50.00,180.00,NO
